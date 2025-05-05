@@ -11,5 +11,22 @@ func _ready():
 
 func _on_Button_pressed():
 	if _android_plugin:
-		# TODO: Update to match your plugin's API
-		_android_plugin.helloWorld()
+
+		print(_android_plugin.containsAlias("dropbox"))
+		print("Generating key")
+		_android_plugin.generateKey("dropbox")
+		print(_android_plugin.containsAlias("dropbox"))
+		print(_android_plugin.getCreationDate("dropbox"))
+		var datetime = Time.get_datetime_dict_from_unix_time(_android_plugin.getCreationDate("dropbox"))
+		print("Creation time: %04d-%02d-%02d %02d:%02d:%02d" % [
+			datetime.year, datetime.month, datetime.day,
+			datetime.hour, datetime.minute, datetime.second
+		])
+		print(_android_plugin.encryptString("my first test", "dropbox"))
+		print(_android_plugin.decryptString(_android_plugin.encryptString("my first test", "dropbox"), "dropbox"))
+		print("Deleting key")
+		_android_plugin.deleteEntry("dropbox")
+		print("Key deleted")
+		print(_android_plugin.containsAlias("dropbox"))
+		
+		
