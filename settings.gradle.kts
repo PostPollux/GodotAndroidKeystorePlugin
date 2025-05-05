@@ -15,6 +15,5 @@ dependencyResolutionManagement {
     }
 }
 
-// TODO: Update project's name.
-rootProject.name = "GodotAndroidPluginTemplate"
+rootProject.name = "AndroidKeystorePlugin"
 include(":plugin")
